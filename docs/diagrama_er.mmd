@@ -1,0 +1,36 @@
+erDiagram
+    USERS ||--o{ SALES : realiza
+    PRODUCTS ||--o{ SALES : contiene
+
+    USERS {
+        bigint id PK
+        varchar name
+        varchar email UK
+        varchar password
+        enum role "admin o cliente"
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    PRODUCTS {
+        bigint id PK
+        varchar name
+        varchar description
+        varchar brand
+        decimal price
+        int stock
+        varchar image_path
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    SALES {
+        bigint id PK
+        bigint product_id FK
+        bigint user_id FK
+        int quantity
+        decimal unit_price
+        decimal total
+        timestamp created_at
+        timestamp updated_at
+    }
